@@ -1,0 +1,14 @@
+FROM node:latest
+
+WORKDIR /app
+
+ENV PATH /app/node_modules/.bin:$PATH
+
+COPY package.json ./
+
+RUN npm install --silent
+
+COPY . ./
+
+# ENV NODE_OPTIONS=--openssl-legacy-provider
+CMD ["npm", "run", "dev"]
